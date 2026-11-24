@@ -1,0 +1,94 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "DM Serif Display", Georgia, serif;
+  --color-ink: #292c28;
+  --color-muted: #7c7e76;
+  --color-line: #e5dfd5;
+  --color-blush: #f7f1e8;
+  --color-paper: #f3eee5;
+  --color-coral: #e06b4f;
+  --color-sage: #78a083;
+  --color-blue: #5b839f;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --shadow-card: 0 20px 50px rgba(57, 52, 42, .10);
+  --shadow-soft: 0 8px 24px rgba(57, 52, 42, .10);
+}
+
+:root {
+  --radius: .65rem;
+  --background: #f7f1e8;
+  --foreground: #292c28;
+  --card: #ffffff;
+  --card-foreground: #292c28;
+  --popover: #ffffff;
+  --popover-foreground: #292c28;
+  --primary: #292c28;
+  --primary-foreground: #f7f1e8;
+  --secondary: #f3eee5;
+  --secondary-foreground: #292c28;
+  --muted-foreground: #7c7e76;
+  --accent: #f3eee5;
+  --accent-foreground: #292c28;
+  --destructive: #c9563c;
+  --destructive-foreground: #ffffff;
+  --border: #e5dfd5;
+  --input: #e5dfd5;
+  --ring: #5b839f;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; min-width: 320px; background: #f7f1e8; color: #292c28; font-family: "DM Sans", ui-sans-serif, system-ui, sans-serif; }
+button, input, textarea, select { font: inherit; }
+button:active, a:active { transform: scale(.98); }
+
+@layer base {
+  * { @apply border-border outline-ring/50; }
+  body { @apply bg-background text-foreground; }
+  button:not(:disabled), [role="button"]:not([aria-disabled="true"]), a[href], select:not(:disabled) { @apply cursor-pointer; }
+}
+
+@layer components {
+  .eyebrow { font-size: 10px; font-weight: 800; letter-spacing: .16em; line-height: 1.1; text-transform: uppercase; }
+  .step-dot { display: grid; height: 34px; width: 34px; place-items: center; border-radius: 12px; color: white; font-size: 10px; font-weight: 800; }
+  .container { width: 100%; margin-inline: auto; padding-inline: 1rem; }
+  .flex { min-height: 0; min-width: 0; }
+  @media (min-width: 640px) { .container { padding-inline: 1.5rem; } }
+  @media (min-width: 1024px) { .container { max-width: 1280px; padding-inline: 2rem; } }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .shadow-card, .shadow-soft { transition: box-shadow 180ms ease-out, transform 180ms ease-out; }
+}
+
+@media print {
+  header, footer, #how-it-works, #features, button { display: none !important; }
+  body { background: white; }
+  #report { padding-top: 0; }
+}
